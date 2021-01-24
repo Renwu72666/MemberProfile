@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq;
 using MemberProfile.Models;
 
-namespace Net5.JWT.Repositories
+namespace MemberProfile.Repositories
 {
     public static class UserRepository
     {
