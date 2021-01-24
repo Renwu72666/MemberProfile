@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MemberProfile.Models
 {
-    public class MembersDetailContext:DbContext
+    public class MembersDetailContext : DbContext
     {
         public MembersDetailContext(DbContextOptions<MembersDetailContext>options):base(options)
         {
