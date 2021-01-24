@@ -29,5 +29,11 @@ namespace MemberProfile.Models
 
         [Column(TypeName = "nvarchar(50)")]
         public string Role { get; set; }
+
+        [Column(TypeName = "nvarchar(50)")]
+        public string Username { get; set; }
+
+        [Column(TypeName = "nvarchar(50)")]
+        public string Password { get; set; }
     }
 }
