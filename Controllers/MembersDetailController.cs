@@ -22,36 +22,36 @@ namespace MemberProfile.Controllers
 
         // GET: api/MembersDetail
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MembersDetail>>> GetMembersDetails()
+        public async Task<ActionResult<IEnumerable<Members>>> GetMembersDetails()
         {
             return await _context.MembersDetails.ToListAsync();
         }
 
         // GET: api/MembersDetail/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<MembersDetail>> GetMembersDetail(int id)
+        public async Task<ActionResult<Members>> GetMembers(int id)
         {
-            var membersDetail = await _context.MembersDetails.FindAsync(id);
+            var members = await _context.MembersDetails.FindAsync(id);
 
-            if (membersDetail == null)
+            if (members == null)
             {
                 return NotFound();
             }
 
-            return membersDetail;
+            return members;
         }
 
         // PUT: api/MembersDetail/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMembersDetail(int id, MembersDetail membersDetail)
+        public async Task<IActionResult> PutMembers(int id, Members members)
         {
-            if (id != membersDetail.MemberDetailId)
+            if (id != members.MemberDetailId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(membersDetail).State = EntityState.Modified;
+            _context.Entry(members).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace MemberProfile.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MembersDetailExists(id))
+                if (!MembersExists(id))
                 {
                     return NotFound();
                 }
@@ -75,31 +75,31 @@ namespace MemberProfile.Controllers
         // POST: api/MembersDetail
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<MembersDetail>> PostMembersDetail(MembersDetail membersDetail)
+        public async Task<ActionResult<Members>> PostMembers(Members members)
         {
-            _context.MembersDetails.Add(membersDetail);
+            _context.MembersDetails.Add(members);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMembersDetail", new { id = membersDetail.MemberDetailId }, membersDetail);
+            return CreatedAtAction("GetMembers", new { id = members.MemberDetailId }, members);
         }
 
         // DELETE: api/MembersDetail/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMembersDetail(int id)
+        public async Task<IActionResult> DeleteMembers(int id)
         {
-            var membersDetail = await _context.MembersDetails.FindAsync(id);
-            if (membersDetail == null)
+            var members = await _context.MembersDetails.FindAsync(id);
+            if (members == null)
             {
                 return NotFound();
             }
 
-            _context.MembersDetails.Remove(membersDetail);
+            _context.MembersDetails.Remove(members);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool MembersDetailExists(int id)
+        private bool MembersExists(int id)
         {
             return _context.MembersDetails.Any(e => e.MemberDetailId == id);
         }

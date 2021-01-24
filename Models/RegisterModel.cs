@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace MemberProfile.Models
 {
     public class RegisterModel

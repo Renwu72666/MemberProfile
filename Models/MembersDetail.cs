@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MemberProfile.Models
 {
-    public class MembersDetail
+    public class Members
     {
         [Key]
         public int MemberDetailId { get; set; }
@@ -27,6 +27,7 @@ namespace MemberProfile.Models
         [Column(TypeName = "nvarchar(100)")]
         public string Address { get; set; }
 
-
+        [Column(TypeName = "nvarchar(50)")]
+        public string Role { get; set; }
     }
 }

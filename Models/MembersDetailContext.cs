@@ -13,6 +13,6 @@ namespace MemberProfile.Models
 
         }
 
-        public DbSet<MembersDetail> MembersDetails { get; set; }
+        public DbSet<Members> MembersDetails { get; set; }
     }
 }
