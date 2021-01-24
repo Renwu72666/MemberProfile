@@ -9,16 +9,29 @@ using System.Text;
 using Microsoft.IdentityModel.Protocols;
 using MemberProfile.Models;
 using System.Configuration;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace MemberProfile.Services
 {
     public static class TokenService
     {
+ 
+        
+
         private const double EXPIRE_HOURS = 1.0;
+
+
         public static string CreateToken(Members user)
         {
-            var key = Encoding.ASCII.GetBytes(ConfigurationManager.AppSettings["JWT"]);
-            // Configuration.GetConnectionString("SqlConnection"))
+            var builder = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("appsettings.json");
+            var config = builder.Build();
+
+            //var memberConfig = new JWTConfig();
+
+            var key = Encoding.ASCII.GetBytes(config["JWT:Secret"]);  
             var tokenHandler = new JwtSecurityTokenHandler();
             var descriptor = new SecurityTokenDescriptor
             {
